@@ -149,7 +149,7 @@ if(isset($_POST['checkBoxArray'])){
                                     //get the image from server
                                     echo "<td><img width='100' src='../images/{$post_image}' alt='image'></td>";
                                     echo "<td>{$post_tags}</td>";
-                                    echo "<td>{$post_comment_counts}</td>";
+                                    echo "<td><a href='view_comment.php?id={$post_id}'>{$post_comment_counts}</a></td>";
                                     echo "<td>{$post_date}</td>";
 
                                 /*

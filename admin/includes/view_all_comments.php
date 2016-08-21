@@ -1,6 +1,57 @@
+<?php
+if(isset($_POST['checkBoxArray'])){
+    global $connection;
+    $bulk_option=$_POST['bulk_option'];
+    foreach($_POST['checkBoxArray'] as $comment_id_value){
+        switch($bulk_option){
+            case 'approve':
+                $update_query="UPDATE comments SET comment_status='approved' WHERE comment_id='$comment_id_value'";
+                $update_result=mysqli_query($connection,$update_query);
+
+                confirm_query($update_result);
+                break;
+            case 'unapprove':
+                $update_query="UPDATE comments SET comment_status='unapproved' WHERE comment_id='$comment_id_value'";
+                $update_result=mysqli_query($connection,$update_query);
+
+                confirm_query($update_result);
+                break;
+            case 'delete':
+                $delete_query="DELETE FROM comments WHERE comment_id='$comment_id_value'";
+                $delete_result=mysqli_query($connection,$delete_query);
+
+                confirm_query($delete_result);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+
+?>
+
+
+<form action="" method="post">
 <table class="table table-bordered table-hover">
+  <div id="bulkOptionContainer" class="col-xs-4">
+        <select name="bulk_option" id="" class="form-control">
+            <option value="">Select Options</option>
+            <option value="approve">Approve</option>
+             <option value="unapprove">Unapprove</option>
+            <option value="delete">Delete</option>
+        </select>
+    </div>
+
+        <div class="col-xs-4">
+            <input type="submit" name="submit" class="btn btn-success" value="Apply">
+        </div>
+
+
                             <thead>
                                 <tr>
+                                     <th><input id="selectAllBoxes" type="checkbox"></th>
                                     <th>Id</th>
                                     <th>Author</th>
                                     <th>Comment</th>
@@ -32,6 +83,10 @@
                                    
                                     //consruct the table
                                     echo "<tr>";
+                            ?>
+
+                             <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $comment_id; ?>'></td>
+                            <?php
                                     echo "<td>{$comment_id}</td>";
                                     echo "<td>{$comment_author}</td>";
                                     echo "<td>{$comment_content}</td>";
@@ -124,6 +179,7 @@
                             </tbody>
                                 
                         </table>
+                    </form>
 
 <?php
 //delete comment by its id

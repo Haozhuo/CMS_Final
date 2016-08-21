@@ -103,9 +103,10 @@
                                 }
 
                                 //auto-increment comment counts each time when a comment is created
+                                
                                 $comment_count_query="UPDATE posts SET post_comment_counts=post_comment_counts+1 WHERE post_id='$post_id'";
                                 $comment_count_result=mysqli_query($connection,$comment_count_query);
-
+                                
                                 if(!$comment_count_result){
                                     die(mysqli_error($connection));
                                 }

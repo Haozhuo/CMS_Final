@@ -1,6 +1,50 @@
+<?php
+if(isset($_POST['checkBoxArray'])){
+    global $connection;
+    $bulk_option=$_POST['bulk_option'];
+    foreach($_POST['checkBoxArray'] as $user_id_value){
+        switch($bulk_option){
+            case "admin":
+                $user_query="UPDATE users SET user_role='admin' WHERE user_id='$user_id_value'";
+                $user_result=mysqli_query($connection,$user_query);
+                confirm_query($user_result);
+                break;
+            case "subscriber":
+                $user_query="UPDATE users SET user_role='subscriber' WHERE user_id='$user_id_value'";
+                $user_result=mysqli_query($connection,$user_query);
+                break;
+            case "delete":
+                $delete_query="DELETE FROM users WHERE user_id='$user_id_value'";
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+?>
+
+
+<form action="" method="post">
 <table class="table table-bordered table-hover">
+  <div id="bulkOptionContainer" class="col-xs-4">
+        <select name="bulk_option" id="" class="form-control">
+            <option value="">Select Options</option>
+            <option value="admin">Admin</option>
+             <option value="subscriber">Subscriber</option>
+            <option value="delete">Delete</option>
+        </select>
+    </div>
+
+        <div class="col-xs-4">
+            <input type="submit" name="submit" class="btn btn-success" value="Apply">
+        </div>
+
+
                             <thead>
                                 <tr>
+                                    <th><input id="selectAllBoxes" type="checkbox"></th>
                                     <th>Id</th>
                                     <th>Username</th>
                                     <th>Firstname</th>
@@ -28,6 +72,10 @@
                                    
                                     //consruct the table
                                     echo "<tr>";
+                            ?>
+
+                             <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $user_id; ?>'></td>
+                            <?php
                                     echo "<td>{$user_id}</td>";
                                     echo "<td>{$user_name}</td>";
                                     echo "<td>{$user_firstname}</td>";
@@ -65,6 +113,7 @@
                             </tbody>
                                 
                         </table>
+                </form>
 
 <?php
 //delete user by its id
