@@ -28,7 +28,19 @@ $(document).ready(function(){
 			window.location=href;
 		}
 	});
+	/*
+	$("#apply").on('click',function(event){
+		if($('#option_selection').val() == "delete"){
+			event.preventDefault();
+			var answer=confirm("Are you sure you want to delete?");
 
+			if(answer){
+				$("#option_selection").submit();
+				window.location="http://www.google.com";
+			}
+		}
+	});
+	*/
 	//loader
 	var div_box="<div id='load-screen'><div id='loading'></div></div>";
 	$("body").prepend(div_box);

@@ -1,5 +1,10 @@
 <?php
 
+function escape_injection($string){
+    global $connection;
+    return mysqli_real_escape_string($connection,trim($string));
+}
+
 function insert_categories(){
 	if(isset($_POST['submit'])){
 		global $connection;

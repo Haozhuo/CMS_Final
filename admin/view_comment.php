@@ -53,19 +53,19 @@ if(isset($_POST['checkBoxArray'])){
 
 ?>
 
-<form action="" method="post">
+<form action="" method="post" id="apply_option">
 <table class="table table-bordered table-hover">
   <div id="bulkOptionContainer" class="col-xs-4">
-        <select name="bulk_option" id="" class="form-control">
+        <select name="bulk_option" id="option_selection" class="form-control">
             <option value="">Select Options</option>
             <option value="approve">Approve</option>
-             <option value="unapprove">Unapprove</option>
+            <option value="unapprove">Unapprove</option>
             <option value="delete">Delete</option>
         </select>
     </div>
 
         <div class="col-xs-4">
-            <input type="submit" name="submit" class="btn btn-success" value="Apply">
+            <input id="apply" type="submit" name="submit" class="btn btn-success" value="Apply">
         </div>
 
 
