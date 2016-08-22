@@ -1,6 +1,7 @@
- <?php
- session_start();
- ?>
+<?php
+ob_start();
+session_start();
+?>
  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,6 +56,10 @@
 
                 <li>
                     <a href="registration.php">Register</a>
+                </li>
+
+                <li>
+                    <a href="contact.php">Contact</a>
                 </li>
 
                 <!--

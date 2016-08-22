@@ -1,4 +1,9 @@
- <?php  include "includes/header.php"; ?>
+<?php  include "includes/header.php"; ?>
+<?php  include "includes/navigation.php"; ?>
+
+  <!-- Navigation -->
+    
+
 
  <?php
     if(isset($_POST['submit'])){
@@ -41,9 +46,7 @@
  ?>
 
 
-    <!-- Navigation -->
-    
-    <?php  include "includes/navigation.php"; ?>
+   
     
  
     <!-- Page Content -->
@@ -54,7 +57,7 @@
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
-                <h1>Register</h1>
+                <h1>Register for newletter</h1>
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
                     <h6 class="text-center"><?php if(isset($_POST['submit'])){
                                 echo $message;
