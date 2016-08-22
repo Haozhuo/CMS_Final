@@ -86,7 +86,7 @@ function user_online(){
         //create a session data
         $session=session_id();
         $time=time();
-        $time_out_in_second=600;
+        $time_out_in_second=1;
         $time_out=$time-$time_out_in_second;
 
         $session_query="SELECT * FROM users_online WHERE session='$session'";
@@ -101,21 +101,11 @@ function user_online(){
         if($count==NULL){
             //this mean there is a new user logged in
             mysqli_query($connection,"INSERT INTO users_online(session,time) VALUES('$session','$time')");
-        } else{
-            //update active time
-            mysqli_query($connection,"UPDATE users_online SET time='$time' WHERE session='$session'");
         }
 
-
-        $delete_user_online_query="DELETE FROM users_online WHERE time < $time_out";
-        $delete_user_online_result=mysqli_query($connection,$delete_user_online_query);
-        confirm_query($delete_user_online_result);
-
-
-        $user_online_result=mysqli_query($connection,"SELECT * FROM users_online");
+        //count the # of users that logged in 1 second
+        $user_online_result=mysqli_query($connection,"SELECT * FROM users_online WHERE time < '$time_out'");
         $user_online_count=mysqli_num_rows($user_online_result);
-        confirm_query($user_online_result);
-
         echo $user_online_count;
 
         }

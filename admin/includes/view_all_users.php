@@ -15,6 +15,7 @@ if(isset($_POST['checkBoxArray'])){
                 break;
             case "delete":
                 $delete_query="DELETE FROM users WHERE user_id='$user_id_value'";
+                $delete_result=mysqli_query($connection,$delete_query);
                 break;
             default:
                 break;
