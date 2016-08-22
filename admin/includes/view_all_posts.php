@@ -21,6 +21,18 @@ if(isset($_POST['checkBoxArray'])){
                 break;                
 
             case 'delete':
+                //delete comments of that post
+                $delete_comment_query="DELETE FROM comments WHERE comment_post_id={$post_id_value}";
+                $delete_comment_result=mysqli_query($connection,$delete_comment_query);
+
+                confirm_query($delete_comment_result);
+
+                //delete image
+                global $post_image;
+                if(!unlink("../images/{$post_image}")){
+                    die("image deletion error");
+                }
+
                 $delete_query="DELETE FROM posts WHERE post_id={$post_id_value}";
                 $delete_result=mysqli_query($connection,$delete_query);
                 confirm_query($delete_result);
@@ -215,6 +227,12 @@ if(isset($_GET['delete'])){
     $delete_comment_result=mysqli_query($connection,$delete_comment_query);
 
     confirm_query($delete_comment_result);
+
+    //delete image
+    global $post_image;
+    if(!unlink("../images/{$post_image}")){
+        die("image deletion error");
+    }
 
     $delete_query="DELETE FROM posts WHERE post_id={$delete_id}";
     $delete_result=mysqli_query($connection,$delete_query);
