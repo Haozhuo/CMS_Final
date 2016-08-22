@@ -1,0 +1,1 @@
+This is a content manage system written in PHP, JavaScript and HTML. It can let user freely post and read blogs and view comments. It also has lots of support for admins. For more information, please visit http://www.haozhuohuang.com/cms
