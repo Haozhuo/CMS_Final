@@ -210,6 +210,12 @@ if(isset($_GET['delete'])){
     global $connection;
     $delete_id=$_GET['delete'];
 
+    //delete comments of that post
+    $delete_comment_query="DELETE FROM comments WHERE comment_post_id={$delete_id}";
+    $delete_comment_result=mysqli_query($connection,$delete_comment_query);
+
+    confirm_query($delete_comment_result);
+
     $delete_query="DELETE FROM posts WHERE post_id={$delete_id}";
     $delete_result=mysqli_query($connection,$delete_query);
 
