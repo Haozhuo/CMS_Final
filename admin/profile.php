@@ -10,12 +10,12 @@
 
         while($row=mysqli_fetch_assoc($user_profile_result)){
             $user_id=$row['user_id'];
-            $user_name=$row['user_name'];
+            $user_name=escape_injection($row['user_name']);
             $user_password=$row['user_password'];
-            $user_firstname=$row['user_firstname'];
-            $user_lastname=$row['user_lastname'];
+            $user_firstname=escape_injection($row['user_firstname']);
+            $user_lastname=escape_injection($row['user_lastname']);
             $user_email=$row['user_email'];
-            $user_role=$row['user_role'];
+            $user_role=escape_injection($row['user_role']);
         }
     }
 ?>

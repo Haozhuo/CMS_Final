@@ -1,3 +1,4 @@
+
 <?php
 if(isset($_POST['checkBoxArray'])){
     global $connection;
@@ -69,7 +70,7 @@ if(isset($_POST['checkBoxArray'])){
 <table class="table table-bordered table-hover">
     
     <div id="bulkOptionContainer" class="col-xs-4">
-        <select name="bulk_option" id="" class="form-control">
+        <select id='option_selection' name="bulk_option" id="" class="form-control">
             <option value="">Select Options</option>
             <option value="published">Publish</option>
             <option value="draft">Draft</option>
@@ -79,7 +80,7 @@ if(isset($_POST['checkBoxArray'])){
     </div>
 
         <div class="col-xs-4">
-            <input type="submit" name="submit" class="btn btn-success" value="Apply">
+            <input id="apply" type="submit" name="submit" class="btn btn-success" value="Apply">
             <a class="btn btn-primary" href="posts.php?source=add_post">Add New</a>
         </div>
                             <thead>

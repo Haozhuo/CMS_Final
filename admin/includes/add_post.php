@@ -80,7 +80,7 @@ if(isset($_POST['create_post'])){
 	<div class="form-group">
 		<label for="post_status">Post Status</label>
 		<select name="post_status">
-			<option value="draft">Select Optionss</option>
+			<option value="draft">Select Options</option>
 			<option value="draft">Draft</option>
 			<option value="published">Publish</option>
 		</select>

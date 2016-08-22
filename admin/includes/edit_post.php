@@ -13,29 +13,29 @@ if(isset($_GET['p_id'])){
 
 	while($row=mysqli_fetch_assoc($edit_result)){
 		//cache that id information
-		$title=$row['post_title'];
-		$category_id=$row['post_category_id'];
-		$author=$row['post_author'];
-		$status=$row['post_status'];
-		$image=$row['post_image'];
-		$tags=$row['post_tags'];
-		$content=$row['post_content'];
+		$title=escape_injection($row['post_title']);
+		$category_id=escape_injection($row['post_category_id']);
+		$author=escape_injection($row['post_author']);
+		$status=escape_injection($row['post_status']);
+		$image=escape_injection($row['post_image']);
+		$tags=escape_injection($row['post_tags']);
+		$content=escape_injection($row['post_content']);
 	}
 
 	if(isset($_POST['update_post'])){
 		global $connection;
 		//cache the values that are edited
-		$post_title=mysqli_real_escape_string($connection,$_POST['title']);
-		$post_author=mysqli_real_escape_string($connection,$_POST['author']);
-		$post_category_id=$_POST['post_category_id'];
-		$post_status=$_POST['post_status'];
+		$post_title=escape_injection($_POST['title']);
+		$post_author=escape_injection($_POST['author']);
+		$post_category_id=escape_injection($_POST['post_category_id']);
+		$post_status=escape_injection($_POST['post_status']);
 
 		//get the name of the uploaded file
-		$post_image=$_FILES['image']['name'];
+		$post_image=escape_injection($_FILES['image']['name']);
 		//get the temporary location of the uploaded file on server
-		$post_image_temp=$_FILES['image']['tmp_name'];
+		$post_image_temp=escape_injection($_FILES['image']['tmp_name']);
 
-		$post_tags=$_POST['post_tags'];
+		$post_tags=escape_injection($_POST['post_tags']);
 		$post_content=mysqli_real_escape_string($connection,$_POST['post_content']);
 
 		//upload the new file
@@ -47,7 +47,7 @@ if(isset($_GET['p_id'])){
 			$image_result=mysqli_query($connection,$image_query);
 
 			while($row=mysqli_fetch_assoc($image_result)){
-				$post_image=$row['post_image'];
+				$post_image=escape_injection($row['post_image']);
 			}
 		}
 		
@@ -101,7 +101,7 @@ if(isset($_GET['p_id'])){
 				
 				while($row=mysqli_fetch_assoc($select_category_result)){
 					$cat_id=$row['cat_id'];
-					$cat_title=$row['cat_title'];
+					$cat_title=escape_injection($row['cat_title']);
 					//determine whether certain cat_id should be seleted or not
 					//In other words, select category id that this element belongs to
 					if($cat_id==$category_id){

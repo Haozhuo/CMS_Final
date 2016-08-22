@@ -10,14 +10,14 @@ if(isset($_GET['edit_user'])){
 	confirm_query($user_result);
 
 	while($row=mysqli_fetch_assoc($user_result)){
-		$user_firstname=$row['user_firstname'];
-		$user_lastname=$row['user_lastname'];
-		$user_role=$row['user_role'];
-		$user_name=$row['user_name'];
+		$user_firstname=escape_injection($row['user_firstname']);
+		$user_lastname=escape_injection($row['user_lastname']);
+		$user_role=escape_injection($row['user_role']);
+		$user_name=escape_injection($row['user_name']);
 		$user_email=$row['user_email'];
-		$user_password=$row['user_password'];
-		$user_image=$row['user_image'];
-		$user_salt=$row['user_randSalt'];
+		$user_password=escape_injection($row['user_password']);
+		$user_image=escape_injection($row['user_image']);
+		$user_salt=escape_injection($row['user_randSalt']);
 	}
 
 }

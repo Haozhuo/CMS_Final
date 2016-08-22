@@ -27,7 +27,7 @@
                                     <?php
                                         if(isset($_POST['update'])){
                                             //get the title to be updated
-                                            $cat_title_to_edit=$_POST['update'];
+                                            $cat_title_to_edit=escape_injection($_POST['update']);
                                             //update query
                                             $update_query="UPDATE categories SET cat_title='$cat_title_to_edit' WHERE cat_id='$cat_id_to_edit'";
                                             //update

@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['checkBoxArray'])){
     global $connection;
-    $bulk_option=$_POST['bulk_option'];
+    $bulk_option=escape_injection($_POST['bulk_option']);
     foreach($_POST['checkBoxArray'] as $comment_id_value){
         switch($bulk_option){
             case 'approve':
@@ -75,10 +75,10 @@ if(isset($_POST['checkBoxArray'])){
                                     //cahe comment results
                                     $comment_id=$row['comment_id'];
                                     $comment_post_id=$row['comment_post_id'];
-                                    $comment_author=$row['comment_author'];
+                                    $comment_author=escape_injection($row['comment_author']);
                                     $comment_email=$row['comment_email'];
                                     $comment_content=$row['comment_content'];
-                                    $comment_status=$row['comment_status'];
+                                    $comment_status=escape_injection($row['comment_status']);
                                     $comment_date=$row['comment_date'];
                                    
                                     //consruct the table
